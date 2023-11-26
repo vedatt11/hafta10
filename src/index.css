@@ -4,3 +4,31 @@ body {
   padding: 0px;
   font-family: 'Times New Roman', Times, serif;
 }
+input,button,textarea{
+  padding: 0.5rem;
+}
+label{
+  font-weight: 700;
+}
+.form-cerceve{
+  max-width: 800px;
+  margin:0 auto;
+  padding: 2rem;
+  border: 2px solid grey;
+  display: flex;
+  gap: 2rem;
+
+}
+.form-cerceve>*{
+  flex:1;
+
+}
+.form-cerceve>form{
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.form-cerceve>form>div{
+  display: flex;
+  flex-direction: column;
+}
