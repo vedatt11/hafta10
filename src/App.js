@@ -1,11 +1,10 @@
 import { useState } from "react";
 import FormBilgi from "./FormBilgi";
-
+import MesajFormu from  "./mesaj"
 
 function App() {
 
-  const[adSoyad,adSoyadGuncelle]=useState("")
-  const[mesaj,mesajGuncelle]=useState("")
+  const[formVeri,formVeriGuncelle]=useState({adSoyad:"",mesaj:""})
   const[formGonderildi, formGonderildiGuncelle]=useState(false)
   const formGonder= olay=>{
     olay.preventDefault()
@@ -17,22 +16,19 @@ function App() {
     <section className='form-cerceve'>
       <form onSubmit={formGonder}>
         <h2>Mesaj Olusturucu</h2>
-        <div>
-          <label>Ad Soyad</label>
-          <input onChange={ olay=>adSoyadGuncelle(olay.target.value)} value={adSoyad} type="text"/>   
-        
-        </div>
-        <div>
-        <label>Mesaj</label>
-        <textarea onChange={olay=>mesajGuncelle(olay.target.value)} value={mesaj}/>
-        <button >Gönder</button>
-      </div>
+        { !formGonderildi?
+           <MesajFormu formVeri={formVeri} formVeriGuncelle={formVeriGuncelle}/>
+           :
+           "Form Gönderildi"
+        }
+       
+       
       </form>
       <div>
         <h2>Mesaj Önizleme</h2>
         <div>
           {formGonderildi ? 
-          <FormBilgi bilgi1={adSoyad} bilgi2={mesaj}/> :
+          <FormBilgi bilgi1={formVeri.adSoyad} bilgi2={formVeri.mesaj}/> :
            <p>Form Henüz Gönderilmedi</p>
 }
         </div>
